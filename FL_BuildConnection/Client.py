@@ -9,18 +9,19 @@ import syft as sy
 from utilities.connection_tools import *
 
 def serverHandler(dataSocket,f,savedStdout,BUFLEN):
+
     # con't Step 1: Launch Duet and send the sever ID to server
-    while(detect('temp_for_parseID_client.txt')): # detect whether f is empty
-        sleep(3)
+    sleep(5) # wait the main thread to generate the output
+    sys.stdout = savedStdout
+    f.close()
 
     Duet_ID = parseID('temp_for_parseID_client.txt')
     dataSocket.send(Duet_ID.encode())
 
-    sys.stdout = savedStdout
-    f.close()
 
     # Step 2: receive the new Duet ID from server
     new_Duet_ID = dataSocket.recv(BUFLEN)
+    print("This is the received Duet ID:")
     print(new_Duet_ID.decode())     # Print the received Duet ID from user to input
 
 
@@ -43,7 +44,7 @@ if __name__ == '__main__':
 
     # step 1: Launch Duet and send the sever ID to server
     savedStdout = sys.stdout
-    f = open('temp_for_parseID_client.txt', 'w+')
+    f = open('temp_for_parseID_client.txt', 'w+',encoding='utf-8')
     sys.stdout = f  # redirect the output steam to the file for parsing the ID
 
     # Create a new thread for parse and send Duet ID to server
