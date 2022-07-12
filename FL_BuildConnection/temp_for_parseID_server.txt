@@ -1,0 +1,19 @@
+🎤  🎸  ♪♪♪ Joining Duet ♫♫♫  🎻  🎹
+
+♫♫♫ >[93m DISCLAIMER[0m: [1mDuet is an experimental feature currently in beta.
+♫♫♫ > Use at your own risk.
+[0m
+[1m
+    > ❤️ [91mLove[0m [92mDuet[0m? [93mPlease[0m [94mconsider[0m [95msupporting[0m [91mour[0m [93mcommunity![0m
+    > https://github.com/sponsors/OpenMined[1m
+
+♫♫♫ > Punching through firewall to OpenGrid Network Node at:
+♫♫♫ > http://ec2-18-218-7-180.us-east-2.compute.amazonaws.com:5000
+♫♫♫ >
+♫♫♫ > ...waiting for response from OpenGrid Network... 
+♫♫♫ > [92mDONE![0m
+
+♫♫♫ > [95mSTEP 1:[0m Send the following Duet Client ID to your duet partner!
+♫♫♫ > Duet Client ID: [1m61b1d28f9d4b561949eff7a4bb56b673[0m
+
+♫♫♫ > ...waiting for partner to connect...

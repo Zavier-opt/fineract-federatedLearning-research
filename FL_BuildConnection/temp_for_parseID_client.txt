@@ -1,0 +1,23 @@
+🎤  🎸  ♪♪♪ Starting Duet ♫♫♫  🎻  🎹
+
+♫♫♫ >[93m DISCLAIMER[0m: [1mDuet is an experimental feature currently in beta.
+♫♫♫ > Use at your own risk.
+[0m
+[1m
+    > ❤️ [91mLove[0m [92mDuet[0m? [93mPlease[0m [94mconsider[0m [95msupporting[0m [91mour[0m [93mcommunity![0m
+    > https://github.com/sponsors/OpenMined[1m
+
+♫♫♫ > Punching through firewall to OpenGrid Network Node at:
+♫♫♫ > http://ec2-18-218-7-180.us-east-2.compute.amazonaws.com:5000
+♫♫♫ >
+♫♫♫ > ...waiting for response from OpenGrid Network... 
+♫♫♫ > [92mDONE![0m
+♫♫♫ > Duet Server ID: [1m64733efa3eb6eb807698049cd88d62f6[0m
+
+♫♫♫ > [95mSTEP 1:[0m Send the following code to your Duet Partner!
+
+import syft as sy
+duet = sy.duet("[1m64733efa3eb6eb807698049cd88d62f6[0m")
+
+♫♫♫ > [95mSTEP 2:[0m Ask your partner for their Client ID and enter it below!
+♫♫♫ > Duet Partner's Client ID: 

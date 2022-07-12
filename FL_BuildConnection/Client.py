@@ -23,6 +23,7 @@ def serverHandler(dataSocket,f,savedStdout,BUFLEN):
     new_Duet_ID = dataSocket.recv(BUFLEN)
     print("This is the received Duet ID:")
     print(new_Duet_ID.decode())     # Print the received Duet ID from user to input
+    print("Input this received Duet ID for connection")
 
 
 
@@ -38,8 +39,6 @@ if __name__ == '__main__':
     except:
         print("Unsuccessfully connect to the server, check the address and port")
         sys.exit(1)
-
-
 
 
     # step 1: Launch Duet and send the sever ID to server
