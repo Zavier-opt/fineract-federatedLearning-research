@@ -1,30 +1,29 @@
 #  === TCP client.py ===
-import os
-from threading import Thread
-from time import sleep
+
 from socket import socket, AF_INET, SOCK_STREAM
-import sys
-import syft as sy
 
-from utilities.connection_tools import *
-
-def serverHandler(dataSocket,f,savedStdout,BUFLEN):
-
-    # con't Step 1: Launch Duet and send the sever ID to server
-    sleep(5) # wait the main thread to generate the output
-    sys.stdout = savedStdout
-    f.close()
-
-    Duet_ID = parseID('temp_for_parseID_client.txt')
-    dataSocket.send(Duet_ID.encode())
+from utilities.client_connection_tools import *
+from utilities.client_fl_tools import *
 
 
-    # Step 2: receive the new Duet ID from server
-    new_Duet_ID = dataSocket.recv(BUFLEN)
-    print("This is the received Duet ID:")
-    print(new_Duet_ID.decode())     # Print the received Duet ID from user to input
-    print("Input this received Duet ID for connection")
+def client_train(duet,dataSocket):
+    client_data = pd.read_csv("./data/german_data_1.csv")
 
+    duet.requests.add_handler(
+        action="accept",
+        print_local=True,  # print the result in your notebook
+    )
+    data_connect = Data_Connection(duet)
+
+    X_train, X_test, y_train, y_test = data_connect.preprocessing("German", client_data, test_size=0.1)
+
+    X_train_ptr, y_train_ptr, X_test_ptr, y_test_ptr = data_connect.send_data_to_duet(X_train, X_test, y_train, y_test)
+
+    dataSocket.send("Data have been sent to Duet".encode())
+
+
+def client_predict(duet):
+    pass
 
 
 if __name__ == '__main__':
@@ -32,7 +31,6 @@ if __name__ == '__main__':
     SERVER_PORT = 5000
     BUFLEN = 1024
 
-    # Build and connect a socket
     dataSocket = socket(AF_INET, SOCK_STREAM)
     try:
         dataSocket.connect((IP, SERVER_PORT))
@@ -40,21 +38,16 @@ if __name__ == '__main__':
         print("Unsuccessfully connect to the server, check the address and port")
         sys.exit(1)
 
+    option = input("Train or Predict ?: ")
+    dataSocket.send(option.encode())
 
-    # step 1: Launch Duet and send the sever ID to server
-    savedStdout = sys.stdout
-    f = open('temp_for_parseID_client.txt', 'w+',encoding='utf-8')
-    sys.stdout = f  # redirect the output steam to the file for parsing the ID
+    duet = build_connection(dataSocket, BUFLEN)
 
-    # Create a new thread for parse and send Duet ID to server
-    # This new thread will also receive the new Duet ID from server
-
-    th = Thread(target=serverHandler, args=(dataSocket, f, savedStdout,BUFLEN))
-    th.start()
-
-    duet = sy.launch_duet() # wait from the server to return the new Duet ID, user need to input this new server ID
-
-
-    print('Duet connect successfully')
+    if option == "Train":
+        client_train(duet,dataSocket)
+    elif option == "Predict":
+        client_predict(duet)
+    else:
+        print("Wrong input option")
 
     dataSocket.close()

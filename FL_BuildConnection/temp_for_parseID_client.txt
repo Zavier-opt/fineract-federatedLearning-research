@@ -12,12 +12,12 @@
 ♫♫♫ >
 ♫♫♫ > ...waiting for response from OpenGrid Network... 
 ♫♫♫ > [92mDONE![0m
-♫♫♫ > Duet Server ID: [1m64733efa3eb6eb807698049cd88d62f6[0m
+♫♫♫ > Duet Server ID: [1m26d6c1393379799056bbdee711aff30e[0m
 
 ♫♫♫ > [95mSTEP 1:[0m Send the following code to your Duet Partner!
 
 import syft as sy
-duet = sy.duet("[1m64733efa3eb6eb807698049cd88d62f6[0m")
+duet = sy.duet("[1m26d6c1393379799056bbdee711aff30e[0m")
 
 ♫♫♫ > [95mSTEP 2:[0m Ask your partner for their Client ID and enter it below!
 ♫♫♫ > Duet Partner's Client ID: 
