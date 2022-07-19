@@ -215,6 +215,6 @@ class ClassifierClient(fl.client.NumPyClient):
         loss, acc = accuracy(net ,X_test_tensor,y_test_tensor)
         return float(loss),  X_test_tensor.shape[0], {"accuracy": float(acc)}
 
-fl.client.start_numpy_client("[::]:8080", client=ClassifierClient())
+fl.client.start_numpy_client("[::]:5000", client=ClassifierClient())
 
 

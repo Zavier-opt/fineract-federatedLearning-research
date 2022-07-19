@@ -21,6 +21,11 @@ def client_train(duet,dataSocket):
 
     dataSocket.send("Data have been sent to Duet".encode())
 
+    print(duet.store.pandas)
+
+    finish_signal = dataSocket.recv(BUFLEN).decode()
+    print(">>> " + finish_signal)
+
 
 def client_predict(duet):
     pass
@@ -43,11 +48,16 @@ if __name__ == '__main__':
 
     duet = build_connection(dataSocket, BUFLEN)
 
+    print("For Test:")
+    print(duet)
+
     if option == "Train":
         client_train(duet,dataSocket)
     elif option == "Predict":
         client_predict(duet)
     else:
         print("Wrong input option")
+
+
 
     dataSocket.close()

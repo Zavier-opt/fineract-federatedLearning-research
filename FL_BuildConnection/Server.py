@@ -7,18 +7,22 @@ from utilities.server_connection_tools import *
 from utilities.server_fL_tools import *
 
 
-def server_train(duet,dataSocket):
-
+def server_train(duet, dataSocket):
     signal = dataSocket.recv(BUFLEN).decode()
-    print(signal)
-    next = input("next step...")
+    print(">>> " + signal)
+
+    print("For Test:")
+    print(duet)
+
+    print(len(duet.store.pandas))
+    next = input(">>> Press Enter for next step...")
 
     FL_Model = FLModel(duet)
+    print(">>> FLModel Initialization finish ")
 
     remote_model_dict = FL_Model.train()
 
     print(remote_model_dict)
-
 
 
 def server_predict(duet):
@@ -26,19 +30,21 @@ def server_predict(duet):
 
 
 def clientHandler(dataSocket, addr, BUFLEN):
-    loop = asyncio.new_event_loop()
-    asyncio.set_event_loop(loop)
-
     receive = dataSocket.recv(BUFLEN).decode()
 
     duet = build_connection(dataSocket, addr, BUFLEN)
 
+    print("For Test:")
+    print(duet)
+
     if receive == "Train":
-        server_train(duet,dataSocket)
+        server_train(duet, dataSocket)
     elif receive == "Predict":
         server_predict(duet)
     else:
         print("Client choose the invalid option!")
+
+    dataSocket.send(receive + " Finish".encode())
 
     dataSocket.close()
 
@@ -52,14 +58,15 @@ if __name__ == '__main__':
     listenSocket.bind((IP, PORT))
 
     listenSocket.listen(8)
-    print(f'Sever launch successfully, wait for a Client to connect at port :{PORT}...')
+    print(f'>>> Sever launch successfully, wait for a Client to connect at port :{PORT}...')
 
     while True:
         dataSocket, addr = listenSocket.accept()
         addr = str(addr)
-        print(f'Client at {addr} , connect successfully')
+        print(f'>>> Client at {addr} , connect successfully')
 
-        th = Thread(target=clientHandler, args=(dataSocket, addr, BUFLEN))
-        th.start()
+        clientHandler(dataSocket, addr, BUFLEN)
+
+        input(">>> Press Enter to exit")
 
     listenSocket.close()
