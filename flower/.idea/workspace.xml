@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a903f6f-310f-411e-bdf6-a7645a1bfdc7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../FL_BuildConnection/Client.py" beforeDir="false" afterPath="$PROJECT_DIR$/../FL_BuildConnection/Client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FL_BuildConnection/Server.py" beforeDir="false" afterPath="$PROJECT_DIR$/../FL_BuildConnection/Server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FL_BuildConnection/temp_for_parseID_client.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../FL_BuildConnection/temp_for_parseID_client.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FL_BuildConnection/temp_for_parseID_server.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../FL_BuildConnection/temp_for_parseID_server.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FL_Simulation/Central_Sever.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../FL_Simulation/Central_Sever.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FL_Simulation/Data_Owner_1.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../FL_Simulation/Data_Owner_1.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FL_BuildConnection/.idea/FL_BuildConnection.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../FL_BuildConnection/.idea/FL_BuildConnection.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FL_BuildConnection/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../FL_BuildConnection/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/flower.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/flower.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FL_Simulation/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/FL_Simulation/client.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FL_Simulation/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/FL_Simulation/server.py" afterDir="false" />
@@ -29,14 +27,10 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/Working Project/Mifos_working/practice"
-  }
-}]]></component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
   <component name="RunManager" selected="Python.client">
     <configuration name="client" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="flower" />
@@ -99,6 +93,9 @@
       <updated>1657658382008</updated>
       <workItem from="1657658383778" duration="303000" />
       <workItem from="1658191766255" duration="1828000" />
+      <workItem from="1658195876603" duration="1174000" />
+      <workItem from="1658197177322" duration="169000" />
+      <workItem from="1658243254334" duration="15055000" />
     </task>
     <servers />
   </component>
@@ -106,7 +103,7 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/flower$client.coverage" NAME="client Coverage Results" MODIFIED="1658192720816" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/FL_Simulation" />
-    <SUITE FILE_PATH="coverage/flower$server.coverage" NAME="server Coverage Results" MODIFIED="1658192710625" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/FL_Simulation" />
+    <SUITE FILE_PATH="coverage/flower$server.coverage" NAME="server Coverage Results" MODIFIED="1658292395023" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/FL_Simulation" />
+    <SUITE FILE_PATH="coverage/flower$client.coverage" NAME="client Coverage Results" MODIFIED="1658293110095" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/FL_Simulation" />
   </component>
 </project>
