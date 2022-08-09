@@ -148,6 +148,7 @@ class Net(t.nn.Module):
 
 def classifier_train(epochs, model, optimizer, X, y, criterion):
     losses = []
+    #print(X)
     for i in range(epochs):
         # Precit the output for Given input
         y_pred = model.forward(X)
@@ -175,29 +176,37 @@ def accuracy(model, X, y):
 
 
 class ClassifierClient(fl.client.NumPyClient):
+    def __init__(self,net,X_train_tensor,y_train_tensor,criterion,optimizer,epochs):
+        self.net = net
+        self.X_train_tensor = X_train_tensor
+        self.y_train_tensor = y_train_tensor
+        self.criterion = criterion
+        self.optimizer = optimizer
+        self.epochs = epochs
+
     def get_parameters(self):
-        return [val.cpu().numpy() for _, val in net.state_dict().items()]
+        return [val.cpu().numpy() for _, val in self.net.state_dict().items()]
 
     def set_parameters(self, parameters):
-        params_dict = zip(net.state_dict().keys(), parameters)
+        params_dict = zip(self.net.state_dict().keys(), parameters)
         state_dict = OrderedDict({k: t.tensor(v) for k, v in params_dict})
-        net.load_state_dict(state_dict, strict=True)
+        self.net.load_state_dict(state_dict, strict=True)
 
     def fit(self, parameters, config):
         self.set_parameters(parameters)
-        classifier_train(epochs, net, optimizer, X_train_tensor, y_train_tensor, criterion)
-        return self.get_parameters(), X_train_tensor.shape[0], {}
+        classifier_train(self.epochs, self.net, self.optimizer, self.X_train_tensor, self.y_train_tensor, self.criterion)
+        return self.get_parameters(), self.X_train_tensor.shape[0], {}
 
     def evaluate(self, parameters, config):
         self.set_parameters(parameters)
-        loss, acc = accuracy(net, X_test_tensor, y_test_tensor)
-        return float(loss), X_test_tensor.shape[0], {"accuracy": float(acc)}
+        loss, acc = accuracy(self.net, self.X_test_tensor, self.y_test_tensor)
+        return float(loss), self.X_test_tensor.shape[0], {"accuracy": float(acc)}
 
 
 if __name__ == '__main__':
 
     IP = '127.0.0.1'
-    SERVER_PORT = 50000
+    SERVER_PORT = 51000
     BUFLEN = 1024
 
     dataSocket = socket(AF_INET, SOCK_STREAM)
@@ -238,9 +247,10 @@ if __name__ == '__main__':
 
     if command == "Train":
 
-
         print(">>> Connect Flower server")
-        fl.client.start_numpy_client("[::]:8080", client=ClassifierClient())
+        #print(X_train_tensor)
+        client = ClassifierClient(net,X_train_tensor,y_train_tensor,criterion,optimizer,epochs)
+        fl.client.start_numpy_client("[::]:8085", client=client)
 
         # for name, param in net.named_parameters():
         #     if param.requires_grad:

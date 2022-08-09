@@ -67,7 +67,7 @@ def update_basic_model(basic_net, received_model_dict, TOTAL_CLIENT_COUNT):
 
 if __name__ == '__main__':
     IP = '127.0.0.1'
-    PORT = 50000
+    PORT = 51000
     BUFLEN = 1024
 
     listenSocket = socket(AF_INET, SOCK_STREAM)
@@ -77,7 +77,7 @@ if __name__ == '__main__':
     print(f'>>> Sever launch successfully, wait for a Client to connect at port :{PORT}...')
 
     TOTAL_CLIENT_COUNT = 0
-    input_channels = 8
+    input_channels = 7
     output_channels = 2
     basic_net = Net(input_channels, output_channels)
 
@@ -95,7 +95,7 @@ if __name__ == '__main__':
             strategy = fl.server.strategy.FedAvg(min_fit_clients=1, min_available_clients=1,
                                                  evaluate_metrics_aggregation_fn=weighted_average)
             fl.server.start_server(
-                server_address="[::]:8080",
+                server_address="[::]:8085",
                 config={"num_rounds": 1},
                 strategy=strategy,
             )
