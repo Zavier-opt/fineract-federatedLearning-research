@@ -45,7 +45,7 @@ First, we need to run the server code to start the federated learning server. Ne
 prepares to accept two post APIs:
 
 For training:\
-&emsp;&emsp; http://127.0.0.1:8000/fl_train/\
+&emsp;&emsp; http://127.0.0.1:8000/fl_train/
 &emsp;&emsp; Describe: Train the model based on the provided dataset.\
 &emsp;&emsp; Method: Post\
 &emsp;&emsp; Parameters: The address of the dataset, which should include the key: *addr*
@@ -53,7 +53,7 @@ For training:\
 ![model_logic](pictures/WX20220911-173021@2x.png)
 
 For preidction:\
-&emsp;&emsp;    http://127.0.0.1:8000/fl_predict/\
+&emsp;&emsp;    http://127.0.0.1:8000/fl_predict/
 &emsp;&emsp; Describe: Get the prediction of a given data.\
 &emsp;&emsp; Method: Post\
 &emsp;&emsp; Parameters: The input data, which should include these keys: *age*, *sex*, *job*, *housing*, *credit*, *purpose*, *duration*.
