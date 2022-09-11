@@ -32,7 +32,7 @@ def server_predict(duet):
 def clientHandler(dataSocket, addr, BUFLEN):
     receive = dataSocket.recv(BUFLEN).decode()
 
-    duet = build_connection(dataSocket, addr, BUFLEN)
+    duet= build_connection(dataSocket, addr, BUFLEN)
 
     print("For Test:")
     print(duet)
